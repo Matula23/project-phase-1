@@ -31,22 +31,33 @@
         class="input_text"
         >
         <br />
-        <input 
-        type="text"
-        name="recipe_ingredient"
-        value=""
-        placeholder="Add ingredient"
-        class="input_text"
-        >
+        <div id = 'ingredients'>
+          <input 
+          type="text"
+          name="recipe_ingredient"
+          value=""
+          placeholder="Add ingredient"
+          class="recipe_ingredients"
+          >
+          <button id = 'ingredient_add'>
+            Add another ingredient
+          </button>
+        </div>
         <br />
-        <input 
-        type="text"
-        name="recipe_step"
-        value=""
-        placeholder="Add recipe step"
-        class="input_text"
-        >
+        <div id = 'steps'>
+          <input 
+          type="text"
+          name="recipe_step"
+          value=""
+          placeholder="Add recipe step"
+          class="recipe_steps"
+          >
+          <button id = 'step_add'>
+            Add another step
+          </button>
+        </div>
       </form>
     </div>
+    <script type="text/javascript" src="src/index.js"></script>
   </body>
 </html>
