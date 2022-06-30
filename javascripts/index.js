@@ -32,3 +32,26 @@ function addSteps(){
       stepsField.value = ''
     })
 }
+
+//function to post new recipes to db.json
+function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
+  if(recipeName != "" && recipeImg != "" && recipeIngredients != "" && recipeSteps != ""){
+    fetch('http://localhost:3000/recipes'),{
+      method: 'POST',
+      headers:
+      {
+      'Content-Type': 'application/json',
+       Accept: "application/json"
+      }
+      body: JSON.stringify({
+        'name':recipeName,
+        'image':recipeImg,
+        'ingredients': recipeIngredients,
+        'steps': recipeSteps
+      })
+    }
+    .then(resp=> resp.json())
+    .then fetchRecipes() //need to create fetch for recipes
+    .catch((error)=> console.log('Error: ', error))
+  }
+}
