@@ -31,6 +31,7 @@ function addSteps(){
       event.preventDefault()
       if(stepsField.value != ''){
       const li = document.createElement('li')
+      li.className = "step"
       li.innerText = stepsField.value
       ol.appendChild(li)
       stepsField.value = ''
@@ -50,12 +51,19 @@ function submitNewRecipe(){
   })
 }
 
+// Adds all current ingredients listed into an array that will be used to post to db.json
 function ingredientArray(){
   const listArray = document.querySelectorAll('.ingredient')
-  debugger
   const ingredientsArray = [...listArray].map(ingredient => ingredient.innerText)
 
   return ingredientsArray
+}
+
+function stepArray(){
+  const listArray = document.querySelectorAll('.step')
+  const stepsArray = [...listArray].map(ingredient => ingredient.innerText)
+
+  return stepsArray
 }
 
 //function to post new recipes to db.json
