@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   addIngredient()
   addSteps()
+  submitNewRecipe()
 })
 
 //function that adds ingredients to ingredient list
@@ -39,15 +40,18 @@ function addSteps(){
     })
 }
 
-
+//function to submit new recipes that will feed to post function
 function submitNewRecipe(){
   const submitBtn = document.querySelector('.submit')
-  submitBtn.addEventListener('submit', (event)=>{
+  submitBtn.addEventListener('click', (event)=>{
     event.preventDefault()
     const recipeName = document.querySelector('#recipe_name').value
     const recipeImg = document.querySelector('#recipe_img').value
-    const recipeIngredients = document.querySelector('#recipe_ingredient').value
-    const recipeSteps = document.querySelector('#recipe_name').value
+    const recipeIngredients = ingredientArray()
+    const recipeSteps = stepArray()
+
+    postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps)
+
   })
 }
 
@@ -59,6 +63,7 @@ function ingredientArray(){
   return ingredientsArray
 }
 
+// Adds all current steps listed into an array that will be used to post to db.json
 function stepArray(){
   const listArray = document.querySelectorAll('.step')
   const stepsArray = [...listArray].map(ingredient => ingredient.innerText)
@@ -66,40 +71,43 @@ function stepArray(){
   return stepsArray
 }
 
-//function to post new recipes to db.json
-// function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
-//   if(recipeName != "" && recipeImg != "" && recipeIngredients != "" && recipeSteps != ""){
-//     fetch('http://localhost:3000/recipes'),{
-//       method: 'POST',
-//       headers:
-//       {
-//       'Content-Type': 'application/json',
-//        Accept: "application/json"
-//       }
-//       body: JSON.stringify({
-//         'name':recipeName,
-//         'image':recipeImg,
-//         'ingredients': recipeIngredients,
-//         'steps': recipeSteps
-//       })
-//     }
-//     .then(resp=> resp.json())
-//     .then(fetchRecipes) //need to create fetch for recipes
-//     .catch((error)=> console.log('Error: ', error))
-//   }
-// }
+// function to post new recipes to db.json
+function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
+  if(recipeName != "" && recipeImg != "" && recipeIngredients != "" && recipeSteps != ""){
+    fetch('http://localhost:3000/recipes',{
+      method: 'POST',
+      headers:
+      {
+      'Content-Type': 'application/json',
+       Accept: "application/json"
+      },
+      body:JSON.stringify({
+        'name':recipeName,
+        'image':recipeImg,
+        'ingredients': recipeIngredients,
+        'steps': recipeSteps,
+      })
+    })
+    .then(resp=> resp.json())
+    // .then(fetchRecipes) //need to create fetch for recipes
+    // .catch((error)=> console.log('Error: ', error))
 
-// function fetchRecipes(){
-//   fetch('http://localhost:3000/recipes')
-//     .then(resp => resp.json())
-//     .then(recipe => {
-//       const card = document.createElement('div')
-//       const h2 = document.createElement('h2')
-//       const img = document.createElement('img')
-//       const p = document.createElement('p')
+    document.querySelector('#recipe_name').value = ''
+    document.querySelector('#recipe_img').value = ''
+  }
+}
+
+function fetchRecipes(){
+  fetch('http://localhost:3000/recipes')
+    .then(resp => resp.json())
+    .then(recipe => {
+      const card = document.createElement('div')
+      const h2 = document.createElement('h2')
+      const img = document.createElement('img')
+      const p = document.createElement('p')
 
 
-//     })
-// }
+    })
+}
 
-//need to create function to submit new toys which will feed the arguments for postNewRecipes()
+// need to create function to submit new toys which will feed the arguments for postNewRecipes()
