@@ -52,7 +52,8 @@ function submitNewRecipe(){
 
 function ingredientArray(){
   const listArray = document.querySelectorAll('.ingredient')
-  const ingredientsArray = listArray.map(ingredient => ingredient.innerText)
+  debugger
+  const ingredientsArray = [...listArray].map(ingredient => ingredient.innerText)
 
   return ingredientsArray
 }
