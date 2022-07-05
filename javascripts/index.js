@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', ()=>{
+  fetchRecipes()
   addIngredient()
   addSteps()
   submitNewRecipe()
@@ -42,8 +43,7 @@ function addSteps(){
 
 //function to submit new recipes that will feed to post function
 function submitNewRecipe(){
-  const submitBtn = document.querySelector('.submit')
-  submitBtn.addEventListener('click', (event)=>{
+  document.addEventListener('submit', (event)=>{
     event.preventDefault()
     const recipeName = document.querySelector('#recipe_name').value
     const recipeImg = document.querySelector('#recipe_img').value
@@ -89,8 +89,8 @@ function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
       })
     })
     .then(resp=> resp.json())
-    // .then(fetchRecipes) //need to create fetch for recipes
-    // .catch((error)=> console.log('Error: ', error))
+    .then(fetchRecipes) //need to create fetch for recipes
+    .catch((error)=> console.log('Error: ', error))
 
     document.querySelector('#recipe_name').value = ''
     document.querySelector('#recipe_img').value = ''
@@ -100,14 +100,50 @@ function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
 function fetchRecipes(){
   fetch('http://localhost:3000/recipes')
     .then(resp => resp.json())
-    .then(recipe => {
-      const card = document.createElement('div')
-      const h2 = document.createElement('h2')
-      const img = document.createElement('img')
-      const p = document.createElement('p')
+    .then(recipes => {
+      const recipeCollection = document.querySelector('#recipe_collection')
+      recipeCollection.innerHTML = ''
+      recipes.map(recipe => {
+        console.log(recipe.ingredients)
+        const card = document.createElement('div')
+        const h2 = document.createElement('h2')
+        const h3Ingredient = document.createElement('h3')
+        const h3Steps = document.createElement('h3')
+        const img = document.createElement('img')
+        const p = document.createElement('p')
 
+        card.className = 'card'
+        h2.innterText = recipe.name
+        img.src = recipe.image
+        img.className = 'recipe_img'
+        h3Ingredient.innerText = 'Ingredients'
+        h3Steps.innerText = 'Recipe Steps'
+
+        recipeCollection.appendChild(card)
+        card.appendChild(h2)
+        card.appendChild(img)
+        card.appendChild(h3Ingredient)
+        //adds recipe ingredients as list to card
+          recipe.ingredients.forEach(ingredient => {
+            const ul = document.createElement('ul')
+            const li = document.createElement('li')
+            li.innerText = ingredient
+            card.appendChild(ul)
+            ul.appendChild(li)
+          })
+        card.appendChild(p)
+        card.appendChild(h3Steps)
+        //adds recipe steps as list to card
+          recipe.steps.forEach(step => {
+            const ol = document.createElement('ol')
+            const li = document.createElement('li')
+            li.innerText = step
+            console.log(card)
+            card.appendChild(ol)
+            ol.appendChild(li)
+          })
 
     })
+  })
 }
 
-// need to create function to submit new toys which will feed the arguments for postNewRecipes()
