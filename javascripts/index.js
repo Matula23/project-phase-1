@@ -97,6 +97,7 @@ function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
   }
 }
 
+//function that fetches recipes when page is loaded or when new recipes are created
 function fetchRecipes(){
   fetch('http://localhost:3000/recipes')
     .then(resp => resp.json())
@@ -113,7 +114,7 @@ function fetchRecipes(){
         const p = document.createElement('p')
 
         card.className = 'card'
-        h2.innterText = recipe.name
+        h2.innerHTML = recipe.name
         img.src = recipe.image
         img.className = 'recipe_img'
         h3Ingredient.innerText = 'Ingredients'
@@ -123,23 +124,26 @@ function fetchRecipes(){
         card.appendChild(h2)
         card.appendChild(img)
         card.appendChild(h3Ingredient)
+        // card.appendChild(p)
         //adds recipe ingredients as list to card
+          const ul = document.createElement('ul')
+          ul.className = 'steps'
           recipe.ingredients.forEach(ingredient => {
-            const ul = document.createElement('ul')
             const li = document.createElement('li')
             li.innerText = ingredient
-            card.appendChild(ul)
+            h3Ingredient.appendChild(ul)
             ul.appendChild(li)
           })
-        card.appendChild(p)
+
         card.appendChild(h3Steps)
         //adds recipe steps as list to card
+        const ol = document.createElement('ol')
+        ol.className = 'steps'
           recipe.steps.forEach(step => {
-            const ol = document.createElement('ol')
             const li = document.createElement('li')
             li.innerText = step
             console.log(card)
-            card.appendChild(ol)
+            h3Steps.appendChild(ol)
             ol.appendChild(li)
           })
 
