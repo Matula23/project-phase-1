@@ -1,6 +1,7 @@
 .card {
   text-align: center;
   border: grey solid 1px;
+  color: white;
   padding: 1rem;
   display: inline-grid;
   grid-auto-rows: minmax(100px, auto);
@@ -37,8 +38,8 @@ form{
   background: #184A45FF;
   color: white;
   width: 500px;
-  padding: 4px;
-  relat;
+  padding: 5px;
+margin: auto;
 }
 
 #header{
@@ -52,4 +53,13 @@ form{
 label{
   width: 100px;
   display: inline-block;
+}
+
+#recipe_placeholder{
+  color: white;
+}
+
+.submit{
+  width: 100%;
+  margin-top: 5px;
 }
