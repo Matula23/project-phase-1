@@ -1,6 +1,7 @@
 .card {
   text-align: center;
   border: grey solid 1px;
+  font-family: Copperplate Gothic;
   color: white;
   padding: 1rem;
   display: inline-grid;
@@ -21,45 +22,61 @@
 }
 
 .container {
-  padding: 1rem; */
+  padding: 1rem;
   width: stretch;
   height: auto;
-  /* display: none; */
   background-image: radial-gradient( circle 759px at -6.7% 50%, #567572FF 0%, #567572FF 26.2%, #567572FF 50.6%, #567572FF 74.1%, #567572FF 100.3% );
   opacity: .8;
 }
 
 body{
   background-image: linear-gradient(to right, #567572FF, #964F4CFF);
+  font-family: Copperplate Gothic;
 }
 
 form{
-  border-radius: 10px;
+  border-radius: 15px;
   background: #184A45FF;
   color: white;
-  width: 500px;
+  width: 550px;
   padding: 5px;
-margin: auto;
+  margin: auto;
+  font-family: Copperplate Gothic;
 }
 
 #header{
   text-align: center;
 }
-#recipe_name{
-
-  display:table-row
-}
 
 label{
-  width: 100px;
+  width: 150px;
   display: inline-block;
 }
 
 #recipe_placeholder{
   color: white;
+  /* list-style-position: inside;
+  text-align: center; */
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%)
 }
 
 .submit{
   width: 100%;
   margin-top: 5px;
+  font-family: Copperplate Gothic;
+}
+
+button{
+  font-family: Copperplate Gothic;
+}
+
+input{
+  font-family: Copperplate Gothic;
+  width: 175px;
+}
+
+h1{
+  color: white;
 }
