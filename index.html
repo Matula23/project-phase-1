@@ -11,8 +11,8 @@
     </div>
     <div class ="container">
       <form class="add_recipe">
-        <h3>Add a new recipe!</h3>
-    
+        <h3 id="header">Add a new recipe!</h3>
+        <label for="">Name: </label>
         <input 
           type="text" 
           name="recipe_name" 
@@ -22,6 +22,7 @@
           class="input_text"
           >
         <br />
+        <label for="">Image: </label>
         <input 
         type="text"
         name="recipe_img"
@@ -32,6 +33,7 @@
         >
         <br />
         <div id = 'ingredients'>
+          <label for="">Ingredients: </label>
           <input 
           type="text"
           name="recipe_ingredient"
@@ -43,8 +45,8 @@
             Add another ingredient
           </button>
         </div>
-        <br />
         <div id = 'steps'>
+          <label for="">Steps: </label>
           <input 
           type="text"
           name="recipe_step"
