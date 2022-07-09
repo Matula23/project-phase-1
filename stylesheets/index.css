@@ -1,5 +1,7 @@
 .card {
   text-align: center;
+  inline-size: 300px;
+  overflow-wrap: break-word;
   border: grey solid 1px;
   font-family: Copperplate Gothic;
   color: white;

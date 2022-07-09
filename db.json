@@ -12,10 +12,39 @@
       "steps": [
         "season steak",
         "let it rest",
-        "sear",
-        "grill"
+        "sear on all sides",
+        "stick in a oven at 275 degrees until desired temp is reached"
       ],
       "id": 1
+    },
+    {
+      "name": "Eggs",
+      "image": "https://www.drgourmet.com/recipes/breakfast/scrambledeggs.shtml",
+      "ingredients": [
+        "Butter",
+        "Eggs",
+        "Salt & Pepper"
+      ],
+      "steps": [
+        "Butter up a skillet",
+        "crack in a couple eggs",
+        "Season with salt & pepper",
+        "continuously whisk until eggs are cooked and fluffy"
+      ],
+      "id": 2
+    },
+    {
+      "name": "Toast",
+      "image": "https://www.google.com/search?q=picture+of+steak&sxsrf=ALiCzsYFIWH_f9HVbdeuoi1Zn2R2cqHKLw:1657020789643&tbm=isch&source=iu&ictx=1&vet=1&fir=JUxjelLeIyc2zM%252CrzeuQKunrUsGmM%252C_%253BtI3EeOa00IFHwM%252C2IxCvK0IuneMTM%252C_%253BuktEpk_ZE-Oj1M%252CThjeHkS_33gKwM%252C_%253BjdCySfnojrdJxM%252C3mE8jqk_DLFGYM%252C_%253BVwFUEqe11iNzhM%252CMob3O_0iDxw2gM%252C_%253B18tJNh70ipMLmM%252CXI9dRfAo3jQu1M%252C_%253Bx0FFOq19s-qd7M%252CRkgfn4qM7lI8CM%252C_%253BXiZfZi2XDHQhoM%252CBNBX-b6oVu66bM%252C_%253BHIKLcHIlgTFl5M%252C2tAuHz4shk9NrM%252C_%253B4FFjhKNeCPgpcM%252Csh8w314_DmPTnM%252C_%253BIXFLgfMmTAzU2M%252ChkSk2GaIcEE1VM%252C_%253B4WC630xAi96dIM%252CrzeuQKunrUsGmM%252C_%253BPRQLsPMKbG6owM%252CBNBX-b6oVu66bM%252C_&usg=AI4_-kQWrWiDqrJdPO_SfzA1BugE8-hBJQ&sa=X&ved=2ahUKEwi_g7W80-H4AhVvJzQIHSINAY0Q9QF6BAgHEAE#imgrc=JUxjelLeIyc2zM",
+      "ingredients": [
+        "bread",
+        "butta"
+      ],
+      "steps": [
+        "toast bread in toaster",
+        "butter that shit"
+      ],
+      "id": 3
     }
   ]
 }
