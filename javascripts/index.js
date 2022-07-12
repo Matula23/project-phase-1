@@ -105,14 +105,14 @@ function fetchRecipes(){
       const recipeCollection = document.querySelector('#recipe_collection')
       recipeCollection.innerHTML = ''
       recipes.map(recipe => {
-        console.log(recipe.ingredients)
+        //create all recipe elements
         const card = document.createElement('div')
         const h2 = document.createElement('h2')
         const h3Ingredient = document.createElement('h3')
         const h3Steps = document.createElement('h3')
         const img = document.createElement('img')
-        const p = document.createElement('p')
 
+        //assign values to all recipe elements
         card.className = 'card'
         h2.innerHTML = recipe.name
         img.src = recipe.image
@@ -120,12 +120,11 @@ function fetchRecipes(){
         h3Ingredient.innerText = 'Ingredients'
         h3Steps.innerText = 'Recipe Steps'
 
+        //append all elements to DOM
         recipeCollection.appendChild(card)
         card.appendChild(h2)
         card.appendChild(img)
         card.appendChild(h3Ingredient)
-        // card.appendChild(p)
-        //adds recipe ingredients as list to card
           const ul = document.createElement('ul')
           ul.className = 'steps'
           recipe.ingredients.forEach(ingredient => {
@@ -136,7 +135,6 @@ function fetchRecipes(){
           })
 
         card.appendChild(h3Steps)
-        //adds recipe steps as list to card
         const ol = document.createElement('ol')
         ol.className = 'steps'
           recipe.steps.forEach(step => {
@@ -149,5 +147,16 @@ function fetchRecipes(){
 
     })
   })
+}
+
+function deleteRecipe(id){
+  fetch(`http://localhost:3000/recipes/${id}`,{
+    method:'DELETE',
+    headers:{
+      'Content-Type':'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(fetchRecipes)
 }
 
