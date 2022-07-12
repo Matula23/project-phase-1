@@ -80,3 +80,9 @@ input{
 h1{
   color: white;
 }
+
+.delete_btn{
+  border-radius: 15px;
+  background-image: linear-gradient(to right, #184A45FF, #567572FF);
+  color: white;
+}
