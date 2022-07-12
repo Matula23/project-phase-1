@@ -111,6 +111,7 @@ function fetchRecipes(){
         const h3Ingredient = document.createElement('h3')
         const h3Steps = document.createElement('h3')
         const img = document.createElement('img')
+        const btn = document.createElement('button')
 
         //assign values to all recipe elements
         card.className = 'card'
@@ -144,7 +145,7 @@ function fetchRecipes(){
             h3Steps.appendChild(ol)
             ol.appendChild(li)
           })
-
+        card.appendChild(btn)
     })
   })
 }
