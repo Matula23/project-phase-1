@@ -115,6 +115,7 @@ function fetchRecipes(){
 
         //assign values to all recipe elements
         card.className = 'card'
+        card.id = `id_${recipe.id}`
         h2.innerHTML = recipe.name
         img.src = recipe.image
         img.className = 'recipe_img'
@@ -146,12 +147,17 @@ function fetchRecipes(){
             h3Steps.appendChild(ol)
             ol.appendChild(li)
           })
+        //add delete button with delete functionality
         card.appendChild(btn)
+        btn.addEventListener('click', ()=>{
+          fetchDelete(recipe.id)
+        })
     })
   })
 }
 
-function deleteRecipe(id){
+//delete fetch
+function fetchDelete(id){
   fetch(`http://localhost:3000/recipes/${id}`,{
     method:'DELETE',
     headers:{
@@ -161,4 +167,3 @@ function deleteRecipe(id){
   .then(response => response.json())
   .then(fetchRecipes)
 }
-
