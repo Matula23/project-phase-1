@@ -1,3 +1,4 @@
+//Event listneer that starts up on load of DOM
 document.addEventListener('DOMContentLoaded', ()=>{
   fetchRecipes()
   addIngredient()
