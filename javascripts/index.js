@@ -122,6 +122,7 @@ function fetchRecipes(){
         h3Ingredient.innerText = 'Ingredients'
         h3Steps.innerText = 'Recipe Steps'
         btn.innerText = 'Delete'
+        btn.className = 'delete_btn'
 
         //append all elements to DOM
         recipeCollection.appendChild(card)
