@@ -120,6 +120,7 @@ function fetchRecipes(){
         img.className = 'recipe_img'
         h3Ingredient.innerText = 'Ingredients'
         h3Steps.innerText = 'Recipe Steps'
+        btn.innerText = 'Delete'
 
         //append all elements to DOM
         recipeCollection.appendChild(card)
