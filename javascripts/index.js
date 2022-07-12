@@ -53,6 +53,9 @@ function submitNewRecipe(){
 
     postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps)
 
+    document.querySelector('#list_of_ingredients').innerHTML = ""
+    document.querySelector('#list_of_steps').innerHTML = ""
+
   })
 }
 
