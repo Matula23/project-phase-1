@@ -144,7 +144,6 @@ function fetchRecipes(){
           recipe.steps.forEach(step => {
             const li = document.createElement('li')
             li.innerText = step
-            console.log(card)
             h3Steps.appendChild(ol)
             ol.appendChild(li)
           })
