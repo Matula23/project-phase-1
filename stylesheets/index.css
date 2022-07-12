@@ -57,11 +57,9 @@ label{
 
 #recipe_placeholder{
   color: white;
-  /* list-style-position: inside;
-  text-align: center; */
   display: inline-block;
   margin-left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%)q
 }
 
 .submit{

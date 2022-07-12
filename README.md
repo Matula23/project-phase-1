@@ -1,4 +1,4 @@
-# Phase 1 Project EZ Recipes
+# Phase 1 Project: EZ Recipes
 The purpose of this project is to provide end users with a no fuss application to submit and preview cooking recipes. In order to submit new recipes to the application, a user must first fill out the following:
 
 * Recipe name
