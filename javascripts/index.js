@@ -7,15 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   deleteList()
 })
 
-//removes ingredients or steps on doubleclick
-function deleteList(){
-  document.addEventListener('dblclick', (event) =>{
-    if(event.target.className === 'ingredient' || event.target.className === 'step'){
-      event.target.remove()
-    }
-  })
-}
-
 //function that adds ingredients to ingredient list
 function addIngredient() {
   const ingredientBtn = document.querySelector('#ingredient_add')
@@ -48,6 +39,15 @@ function addSteps() {
       li.innerText = stepsField.value
       ol.appendChild(li)
       stepsField.value = ''
+    }
+  })
+}
+
+//removes ingredients or steps on doubleclick
+function deleteList(){
+  document.addEventListener('dblclick', (event) =>{
+    if(event.target.className === 'ingredient' || event.target.className === 'step'){
+      event.target.remove()
     }
   })
 }
