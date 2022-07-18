@@ -1,50 +1,60 @@
 //Event listneer that starts up on load of DOM
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
   fetchRecipes()
   addIngredient()
   addSteps()
   submitNewRecipe()
+  deleteList()
 })
 
+//removes ingredients or steps on doubleclick
+function deleteList(){
+  document.addEventListener('dblclick', (event) =>{
+    if(event.target.className === 'ingredient' || event.target.className === 'step'){
+      event.target.remove()
+    }
+  })
+}
+
 //function that adds ingredients to ingredient list
-function addIngredient(){
+function addIngredient() {
   const ingredientBtn = document.querySelector('#ingredient_add')
   const ingredientField = document.querySelector('#recipe_ingredients')
   const ul = document.querySelector('#list_of_ingredients')
 
-    ingredientBtn.addEventListener('click', (event)=>{
-      event.preventDefault()
-      if(ingredientField.value != ''){
+  ingredientBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    if (ingredientField.value != '') {
       const li = document.createElement('li')
       li.className = 'ingredient'
       li.innerText = ingredientField.value
       ul.appendChild(li)
       ingredientField.value = ''
-      }
+    }
   })
 }
 
 //function that adds steps to step list
-function addSteps(){
+function addSteps() {
   const stepsBtn = document.querySelector('#step_add')
   const stepsField = document.querySelector('#recipe_steps')
   const ol = document.querySelector('#list_of_steps')
 
-    stepsBtn.addEventListener('click', (event)=>{
-      event.preventDefault()
-      if(stepsField.value != ''){
+  stepsBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    if (stepsField.value != '') {
       const li = document.createElement('li')
       li.className = "step"
       li.innerText = stepsField.value
       ol.appendChild(li)
       stepsField.value = ''
-      }
-    })
+    }
+  })
 }
 
 //function to submit new recipes that will feed to post function
-function submitNewRecipe(){
-  document.addEventListener('submit', (event)=>{
+function submitNewRecipe() {
+  document.addEventListener('submit', (event) => {
     event.preventDefault()
     const recipeName = document.querySelector('#recipe_name').value
     const recipeImg = document.querySelector('#recipe_img').value
@@ -60,41 +70,41 @@ function submitNewRecipe(){
 }
 
 // Adds all current ingredients listed into an array that will be used to post to db.json
-function ingredientArray(){
+function ingredientArray() {
   const listArray = document.querySelectorAll('.ingredient')
-  const ingredientsArray = [...listArray].map(ingredient => ingredient.innerText)
+  const ingredientsArray = [...listArray].map(ingredient => ingredient.innerText) // use spread operator because the node list array selected from the DOM is not a typical array and can't use array methods on it.
 
   return ingredientsArray
 }
 
 // Adds all current steps listed into an array that will be used to post to db.json
-function stepArray(){
+function stepArray() {
   const listArray = document.querySelectorAll('.step')
-  const stepsArray = [...listArray].map(ingredient => ingredient.innerText)
+  const stepsArray = [...listArray].map(ingredient => ingredient.innerText) // remove spread operator
 
   return stepsArray
 }
 
 // function to post new recipes to db.json
-function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
-  if(recipeName != "" && recipeImg != "" && recipeIngredients != "" && recipeSteps != ""){
-    fetch('http://localhost:3000/recipes',{
+function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps) {
+  if (recipeName != "" && recipeImg != "" && recipeIngredients != "" && recipeSteps != "") {
+    fetch('http://localhost:3000/recipes', {
       method: 'POST',
       headers:
       {
-      'Content-Type': 'application/json',
-       Accept: "application/json"
+        'Content-Type': 'application/json',
+        Accept: "application/json"
       },
-      body:JSON.stringify({
-        'name':recipeName,
-        'image':recipeImg,
+      body: JSON.stringify({
+        'name': recipeName,
+        'image': recipeImg,
         'ingredients': recipeIngredients,
         'steps': recipeSteps,
       })
     })
-    .then(resp=> resp.json())
-    .then(fetchRecipes) //need to create fetch for recipes
-    .catch((error)=> console.log('Error: ', error))
+      .then(resp => resp.json())
+      .then(fetchRecipes)
+      .catch((error) => console.log('Error: ', error))
 
     document.querySelector('#recipe_name').value = ''
     document.querySelector('#recipe_img').value = ''
@@ -102,7 +112,7 @@ function postNewRecipe(recipeName, recipeImg, recipeIngredients, recipeSteps){
 }
 
 //function that fetches recipes when page is loaded or when new recipes are created
-function fetchRecipes(){
+function fetchRecipes() {
   fetch('http://localhost:3000/recipes')
     .then(resp => resp.json())
     .then(recipes => {
@@ -133,41 +143,41 @@ function fetchRecipes(){
         card.appendChild(h2)
         card.appendChild(img)
         card.appendChild(h3Ingredient)
-          const ul = document.createElement('ul')
-          ul.className = 'steps'
-          recipe.ingredients.forEach(ingredient => {
-            const li = document.createElement('li')
-            li.innerText = ingredient
-            h3Ingredient.appendChild(ul)
-            ul.appendChild(li)
-          })
+        const ul = document.createElement('ul')
+        ul.className = 'steps'
+        recipe.ingredients.forEach(ingredient => {
+          const li = document.createElement('li')
+          li.innerText = ingredient
+          h3Ingredient.appendChild(ul)
+          ul.appendChild(li)
+        })
 
         card.appendChild(h3Steps)
         const ol = document.createElement('ol')
         ol.className = 'steps'
-          recipe.steps.forEach(step => {
-            const li = document.createElement('li')
-            li.innerText = step
-            h3Steps.appendChild(ol)
-            ol.appendChild(li)
-          })
+        recipe.steps.forEach(step => {
+          const li = document.createElement('li')
+          li.innerText = step
+          h3Steps.appendChild(ol)
+          ol.appendChild(li)
+        })
         //add delete button with delete functionality
         card.appendChild(btn)
-        btn.addEventListener('click', ()=>{
+        btn.addEventListener('click', () => {
           fetchDelete(recipe.id)
         })
+      })
     })
-  })
 }
 
 //delete fetch
-function fetchDelete(id){
-  fetch(`http://localhost:3000/recipes/${id}`,{
-    method:'DELETE',
-    headers:{
-      'Content-Type':'application/json'
+function fetchDelete(id) {
+  fetch(`http://localhost:3000/recipes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
-  .then(fetchRecipes)
+    .then(response => response.json())
+    .then(fetchRecipes)
 }

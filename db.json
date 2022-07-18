@@ -16,22 +16,6 @@
         "stick in a oven at 275 degrees until desired temp is reached"
       ],
       "id": 1
-    },
-    {
-      "name": "Eggs",
-      "image": "https://www.eatthis.com/wp-content/uploads/sites/4/2020/09/scrambled-eggs.jpg?quality=82&strip=1&w=640",
-      "ingredients": [
-        "Butter",
-        "Eggs",
-        "Salt & Pepper"
-      ],
-      "steps": [
-        "Butter up a skillet",
-        "crack in a couple eggs",
-        "Season with salt & pepper",
-        "whisk until eggs are cooked and fluffy"
-      ],
-      "id": 2
     }
   ]
 }

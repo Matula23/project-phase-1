@@ -86,3 +86,9 @@ h1{
   background-image: linear-gradient(to right, #184A45FF, #567572FF);
   color: white;
 }
+
+.delete_btn:hover {
+  background-color: whitesmoke;
+  border: #e04b52 solid 1px;
+  color: #e04b52;
+}
